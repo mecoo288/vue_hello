@@ -1,4 +1,4 @@
-import fetch from '../config/fetch'
+import axios from 'axios'
 
 
 /**
@@ -17,14 +17,14 @@ if (process.env.NODE_ENV == 'development') {
 	 * 获取短信验证码
 	 */
 
-	var get_code = mobile => fetch('GET', '/hotel/Home/Tool/sendVertifyCode', {
-		mobile: mobile,
-		scene: 'login',
-		type: 'sms'
+	var get_code = mobile => axios.get('/hotel/Home/Tool/sendVertifyCode',  {
+		params:{
+			mobile: mobile,
+		}
 	});
 
-	var do_login = ({mobile, code}) => fetch('post', '/hotel/Home/Login/doLogin', {
-		loginname: mobile,
+	var do_login = ({mobile, code}) => axios.post('/hotel/Home/Login/doLogin', {
+		mobile: mobile,
 		code: code
 	})
 

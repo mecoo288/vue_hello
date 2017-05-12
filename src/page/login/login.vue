@@ -22,10 +22,10 @@ import { mapActions } from 'vuex'
 export default {
 	data(){
 		return {
-			codeBtnDisabled: true,
-			loginBtnDisabled: true,
-			mobile:"",
-			code: "",
+			codeBtnDisabled: false,
+			loginBtnDisabled: false,
+			mobile:"13651898049",
+			code: "111111",
 			logo: require('../../images/tuzuu.png')
 		}
 	},

@@ -36,6 +36,7 @@ export default async(type = 'GET', url = '', data = {}, method = 'fetch') => {
 		}
 		
 		try {
+			console.log(requestConfig);
 			var response = await fetch(url, requestConfig);
 			var responseJson = await response.json();
 		} catch (error) {
