@@ -1,5 +1,6 @@
-import {GET_CODE} from './mutations-type'
+import {GET_CODE} from './mutations-type';
 
-export default {
 
-}
+export default{
+	GET_CODE
+};

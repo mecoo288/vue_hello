@@ -1,6 +1,8 @@
-import App from '../App'
+import App from '../App';
 
-const login = r => require.ensure([], () => r(require('../page/login/login')), 'login')
+const login = r => require.ensure([], () => r(require('../page/login/')), 'login');
+const scene = r => require.ensure([], () => r(require('../page/scene/')), 'scene');
+const main = r => require.ensure([], () => r(require('../page/main/')), 'main');
 
 
 
@@ -13,10 +15,20 @@ export default [{
             path: '',
             redirect: '/login'
         },
+        //场景首页
+        {
+            path: '/main',
+            component: main
+        },
         //登录注册页
         {
             path: '/login',
             component: login
         },
+        //选择场景页
+        {
+            path: '/scene',
+            component: scene
+        }
     ]
-}]
+}];
