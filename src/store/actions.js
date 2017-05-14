@@ -3,12 +3,14 @@ import{
 	DO_LOGIN,
 	GET_SCENE,
 	SET_SCENE,
+	GET_USERINFO,
 } from './mutations-type';
 import {
 	get_code, 
 	do_login,
 	get_scene,
 	set_scene,
+	get_userInfo,
 } from '../service/';
 export default {
 	[GET_CODE](state, {mobile}){
@@ -22,5 +24,8 @@ export default {
 	},
 	[SET_SCENE](state, parma){
 		return set_scene(parma);
+	},
+	[GET_USERINFO](state){
+		return get_userInfo();
 	}
 };

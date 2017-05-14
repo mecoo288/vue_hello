@@ -79,6 +79,7 @@ export default {
           return;
         }
         story.set(TOKEN, data.data);
+        _this.$router.push('/scene')
   		})
   	}
   },

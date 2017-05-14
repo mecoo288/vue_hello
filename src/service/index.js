@@ -23,9 +23,9 @@ if (process.env.NODE_ENV == 'development') {
 		qdcode: qdcode
 	});
 
-
+	var get_userInfo = () => get('/hotel/Home/User/getUserInfo');
 
 }
 
 
-export {get_code, do_login, get_scene, set_scene};
+export {get_code, do_login, get_scene, set_scene, get_userInfo};
