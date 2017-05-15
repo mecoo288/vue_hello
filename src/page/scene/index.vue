@@ -27,7 +27,7 @@ Vue.use(ToastPlugin);
       Group,
       XHeader
     },
-    created: function(){
+    created(){
       this.getScene();
     },
     methods: {

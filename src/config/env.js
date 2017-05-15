@@ -8,13 +8,13 @@
  */
 let baseUrl; 
 let routerMode;
-const imgBaseUrl = 'https://fuss10.elemecdn.com';
+const imgBaseUrl = 'http://tuzuu-weixin.oss-cn-shanghai.aliyuncs.com';
 
 if (process.env.NODE_ENV == 'development') {
 	baseUrl = '';
 	routerMode = 'hash'
 }else{
-	baseUrl = 'https://mainsite-restapi.ele.me';
+	baseUrl = 'http://tuzuu-weixin.oss-cn-shanghai.aliyuncs.com';
 	routerMode = 'hash'
 }
 

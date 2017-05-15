@@ -27,7 +27,7 @@ module.exports = {
         context: [ //代理路径
             '/hotel',
         ],
-        proxypath: 'http://spqa.tuzuu.com',
+        proxypath: 'http://spdev.tuzuu.com',
         // CSS Sourcemaps off by default because relative paths are "buggy"
         // with this option, according to the CSS-Loader README
         // (https://github.com/webpack/css-loader#sourcemaps)

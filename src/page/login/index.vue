@@ -7,7 +7,7 @@
   	</div>
    	<group class="weui-cells_form">
       <x-input title="手机号" class="weui-vcode" v-model="mobile" placeholder="请输入手机号" keyboard="number">
-        <x-button slot="right" type="primary" :disabled="codeBtnDisabled || codeLoading" mini @click.native="getCode" :show-loading="codeLoading">获取验证码</x-button>
+        <x-button slot="right" type="primary" :disabled="codeBtnDisabled" mini @click.native="getCode" :show-loading="codeLoading">{{getCodeTxt}}</x-button>
       </x-input>
       <x-input title="验证码" v-model="code" placeholder="请输入验证码" :min="6" :max="6" keyboard="number"></x-input>
     </group>
@@ -30,15 +30,20 @@ export default {
 			codeBtnDisabled: false,
       codeLoading: false,
 			loginBtnDisabled: false,
+      getCodeTxt:"获取验证码",
 			mobile:"13651898049",
 			code: "111111",
-			logo: require('../../images/tuzuu.png')
+			logo: require('../../images/tuzuu.png'),
+      count: 0
 		}
 	},
   components: {
     XInput,
     XButton,
     Group,
+  },
+  created(){
+    
   },
   methods: {
   	...mapActions([
@@ -48,12 +53,24 @@ export default {
   	checkForm(){
   		this.loginBtnDisabled = !(/^1\d{10}$/.test(this.mobile) && /^\d{6}$/.test(this.code))
   	},
+    tick(){
+      let _this = this;
+      this.count = 60;
+      this.interval = setInterval(function () {
+        _this.count -= 1;
+        if(!_this.count){
+          clearInterval( _this.interval );
+        }
+      }, 1000)
+    },
   	getCode(){
       let _this = this;
       this.codeLoading = true;
+      this.codeBtnDisabled = true;
   		this.GET_CODE({mobile: this.mobile}).then(function({status, statusText, data, ...res}){
   			// console.log(res);
         _this.codeLoading = false;
+        _this.codeBtnDisabled = false;
         if(status != 200){
           _this.toast(statusText)
           return;
@@ -62,6 +79,7 @@ export default {
           _this.toast(data.errmsg);
           return;
         }
+        _this.tick();
   		})
   	},
     toast(tip){
@@ -81,7 +99,8 @@ export default {
         story.set(TOKEN, data.data);
         _this.$router.push('/scene')
   		})
-  	}
+  	},
+
   },
   watch: {
   	mobile(newVal, oldVal){
@@ -90,7 +109,16 @@ export default {
   	},
   	code(newVal, oldVal){
   		this.checkForm()
-  	}
+  	},
+    count(newVal){
+      if(newVal){
+        this.getCodeTxt = newVal + "s";
+        this.codeBtnDisabled = true;
+        return;
+      }
+      this.getCodeTxt = "获取验证码"; 
+      this.codeBtnDisabled = false;
+    }
   }
 }
 </script>
