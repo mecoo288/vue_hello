@@ -25,7 +25,27 @@ if (process.env.NODE_ENV == 'development') {
 
 	var get_userInfo = () => get('/hotel/Home/User/getUserInfo');
 
+	var get_dailyData = () => get('/hotel/Home/Order/dailyData');
+
+	var get_list = ({limit = 15, page=1, ol=1, is_show =1, product_type}) => get('/hotel/Home/Product/getList', {
+		limit: limit,
+		page: page,
+		ol: ol,
+		is_show: is_show,
+		product_type: product_type,
+	});
+
+	var get_productType = () => get('/hotel/Home/Product/getProductType');
+
 }
 
 
-export {get_code, do_login, get_scene, set_scene, get_userInfo};
+export {
+	get_code, 
+	do_login, 
+	get_scene, 
+	set_scene, 
+	get_userInfo, 
+	get_list,
+	get_productType,
+};

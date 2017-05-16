@@ -5,3 +5,5 @@ export const TOKEN = "TOKEN";
 export const GET_SCENE = "GET_SCENE";
 export const SET_SCENE = "SET_SCENE";
 export const GET_USERINFO = "GET_USERINFO";
+export const GET_LIST = "GET_LIST";
+export const GET_MAIN = "GET_MAIN";

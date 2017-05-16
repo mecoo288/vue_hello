@@ -1,6 +1,5 @@
 <template>
-	<!-- <router-view></router-view> -->
-	<div style="height:100%;">
+	<div style="height: 100%">
 	    <view-box ref="viewBox">
 	      <transition>
 	        <router-view class="router-view"></router-view>
